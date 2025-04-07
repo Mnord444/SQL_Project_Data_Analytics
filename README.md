@@ -11,5 +11,6 @@ The analysis is divided into two key sections:
 MySQL Workbench 8.0  
 Data set imported from Kaggle  
 ![1 Intro Image for GitHub](https://github.com/user-attachments/assets/00612d05-bd16-4dbc-ad4b-fbce3b474675)  
-Part 1 Data Cleaning.[Check out my work here](https://github.com/Mnord444/SQL_Project_Data_Analytics/tree/main/Data%20Cleaning%20Project)
+Part 1 Data Cleaning.[Check out my work here](https://github.com/Mnord444/SQL_Project_Data_Analytics/tree/main/Data%20Cleaning%20Project)  
+Part 2 Data Analysis.[Check out my work here](https://github.com/Mnord444/SQL_Project_Data_Analytics/tree/main/Data%20Analysis%20Project)
 
