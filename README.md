@@ -1,4 +1,4 @@
-# SQL_Project_Data_Analytics
+# SQL Project Data Analysis
  
 ## Introduction
 This SQL project explores global layoff trends, analyzing data from companies across industries and regions. 
