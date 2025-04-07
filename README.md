@@ -6,4 +6,6 @@ By examining patterns in frequency and scale, the analysis seeks to provide insi
 ## Tool Used  
 MySQL Workbench 8.0  
 Data set imported from Kaggle  
-![1 Intro Image for GitHub](https://github.com/user-attachments/assets/00612d05-bd16-4dbc-ad4b-fbce3b474675)
+![1 Intro Image for GitHub](https://github.com/user-attachments/assets/00612d05-bd16-4dbc-ad4b-fbce3b474675)  
+[Check out my work here](https://github.com/Mnord444/SQL_Project_Data_Analytics/tree/main/Data%20Cleaning%20Project)
+
