@@ -124,5 +124,6 @@ WHERE total_laid_off IS NULL
 AND percentage_laid_off IS NULL;
 ```
 ![5 Null Deleted](https://github.com/user-attachments/assets/c8200774-7967-410c-a05e-22df513572d3)  
-By executing this, I have ensured that all remaining data will be reliable for analyzing layoffs trends and patterns.
+By executing this, I have ensured that all remaining data will be reliable for analyzing layoffs trends and patterns.  
+Data Analysis.[Check out my work here](https://github.com/Mnord444/SQL_Project_Data_Analytics/tree/main/Data%20Analysis%20Project)
 
