@@ -60,7 +60,77 @@ ORDER BY 2 DESC;
 
  ![Industry-Wise Total Layoffs Ranked in Descending Order](https://github.com/user-attachments/assets/4522dece-48a1-40ae-9ea8-cbfe1057ec39)  
 
- 
+ ## Country-Wise Total Layoffs Ranked in Descending Order
+ 6. This query aggregates the total number of layoffs by country and ranks them in descending order of total layoffs.
+```
+SELECT country, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY country
+ORDER BY 2 DESC;
+```
+- `SUM(total_laid_off)`:- Adds up all the layoffs for each country.
+- `GROUP BY country`:- Groups the data by unique country names so that the aggregation `(SUM)` is applied for each country.
+- `ORDER BY 2 DESC`:- Sorts the results by the second column `(SUM(total_laid_off))` in descending order, showing countries with the highest layoffs at the top.
+  
+![Country-Wise Total Layoffs Ranked in Descending Order](https://github.com/user-attachments/assets/8c00149d-4310-431f-b669-61313437dd7a)  
+
+## Yearly Total Layoffs Ranked by Most Recent Year  
+7. This query aggregates the total number of layoffs by year and ranks them in descending order by year.  
+```
+SELECT YEAR(`date`), SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY YEAR(`date`)
+ORDER BY 1 DESC;
+```
+- `YEAR(date)`:- Extracts the year portion from the date column to group layoffs by year.
+- `SUM(total_laid_off)`:- Calculates the total layoffs for each year.
+- `GROUP BY YEAR(date)`:- Groups the data by unique years, ensuring the totals are calculated for each year.
+- `ORDER BY 1 DESC`:- Sorts the results by the year column in descending order, displaying the most recent years at the top.
+
+![Yearly Total Layoffs Ranked by Most Recent Year](https://github.com/user-attachments/assets/3848c685-c41c-4233-99d7-dc805ebdc831)  
+
+## Monthly Total Layoffs Ordered Chronologically  
+8. This query is designed to aggregate the total number of layoffs by month, extracting the year-month portion from the `date` column for grouping.  
+```
+SELECT SUBSTRING(`date`,1,7) AS `MONTH`, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY `MONTH`
+ORDER BY 1 ASC;
+```
+- `SUBSTRING(date,1,7)`:- Extracts the first 7 characters of the `date` column, which typically correspond to the year and month in the format `YYYY-MM`. This creates a new column alias called `MONTH`.
+- `SUM(total_laid_off)`:- Calculates the total layoffs for each month.
+- `GROUP BY MONTH`:- Groups the data by the extracted year-month value, enabling monthly aggregation.
+- `ORDER BY 1 ASC`:- Sorts the results by the `MONTH` column in ascending order to display months sequentially.
+
+  ![Monthly Total Layoffs Ordered Chronologically](https://github.com/user-attachments/assets/9b0dfd4c-919c-401c-9bce-c81294c93425)
+
+## Monthly Layoffs with Rolling Total Cumulative Analysis  
+9. This query calculates a rolling total of layoffs by month, providing both monthly layoffs and their cumulative total over time.
+```
+WITH Rolling_Total AS
+(
+SELECT SUBSTRING(`date`,1,7) AS `MONTH`, SUM(total_laid_off) AS total_off
+FROM layoffs_staging2
+GROUP BY `MONTH`
+ORDER BY 1 ASC
+)
+SELECT `MONTH`, total_off,
+SUM(total_off) OVER(ORDER BY `MONTH`) AS rolling_total
+FROM Rolling_Total;
+```
+-` WITH Rolling_Total AS`:- Creates a Common Table Expression `(CTE)` named `Rolling_Total` to encapsulate the initial aggregation of data.
+- `Inside the CTE`:- Extracts the year-month portion `(SUBSTRING(date, 1, 7) AS MONTH)` for grouping.
+- `Aggregates layoffs` `(SUM(total_laid_off) AS total_off)` by month.
+- Orders the results chronologically `(ORDER BY 1 ASC)` for later cumulative calculations.
+- Main Query:- Selects `MONTH` and `total_off` from the CTE.
+- Uses the `SUM(total_off) OVER(ORDER BY MONTH) ` window function to calculate a rolling total of layoffs over months. This provides a cumulative sum as each month progresses.
+
+![Monthly Layoffs with Rolling Total Cumulative Analysis](https://github.com/user-attachments/assets/8b4c30fc-0d25-4689-89bb-ef555caf89e3)
+
+
+
+
+
 
 
 
